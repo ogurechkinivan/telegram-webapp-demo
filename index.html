@@ -1,43 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
   <meta charset="UTF-8" />
-  <title>Приветствие из Web App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telegram WebApp</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f1f1f1;
-    }
-    h2 {
-      margin-bottom: 10px;
-    }
-    input, button {
-      padding: 10px;
-      width: 100%;
-      margin-top: 10px;
-      font-size: 16px;
-    }
-  </style>
 </head>
-<body>
-  <h2>Привет, <span id="tg-username">гость</span> 👋</h2>
+<body style="font-family: sans-serif; padding: 20px;">
 
-  <input type="text" id="nameInput" placeholder="Введи своё имя" />
-  <button onclick="sendData()">Отправить</button>
+  <h2>👋 Привет!</h2>
+  <p>Введите имя:</p>
+  <input id="nameInput" type="text" placeholder="Ваше имя" style="padding: 8px;" />
+  <button onclick="sendName()" style="padding: 10px 20px; margin-top: 10px;">Отправить</button>
 
   <script>
-    const tg = window.Telegram.WebApp;
-    const username = tg.initDataUnsafe.user?.first_name || 'гость';
-
-    document.getElementById("tg-username").innerText = username;
-
-    function sendData() {
+    function sendName() {
       const name = document.getElementById("nameInput").value;
-      tg.sendData(name); // отправим данные боту
-      tg.close(); // закроем WebApp
+      if (!name) {
+        alert("Введите имя!");
+        return;
+      }
+
+      Telegram.WebApp.sendData(JSON.stringify({ name }));
     }
   </script>
 </body>
