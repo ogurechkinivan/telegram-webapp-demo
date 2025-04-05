@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Test WebApp</title>
+  <meta charset="UTF-8" />
+  <title>Telegram WebApp</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
-    Telegram.WebApp.ready();
+    Telegram.WebApp.ready(); // ОБЯЗАТЕЛЬНО
   </script>
 </head>
-<body style="padding: 20px;">
-  <input id="name" type="text" placeholder="Имя" />
-  <button onclick="send()">Отправить</button>
+<body style="font-family: sans-serif; padding: 20px;">
+  <h2>👋 Привет!</h2>
+  <p>Введите имя:</p>
+  <input id="nameInput" type="text" placeholder="Ваше имя" style="padding: 8px; width: 90%;" />
+  <button onclick="sendName()" style="padding: 10px 20px; margin-top: 10px;">Отправить</button>
 
   <script>
-    function send() {
-      const name = document.getElementById("name").value;
-      Telegram.WebApp.sendData(JSON.stringify({ name }));
+    function sendName() {
+      const name = document.getElementById("nameInput").value;
+      if (!name) {
+        alert("Введите имя!");
+        return;
+      }
+
+      const data = JSON.stringify({ name });
+      console.log("📤 Отправка:", data);
+      Telegram.WebApp.sendData(data);
     }
   </script>
 </body>
