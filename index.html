@@ -21,8 +21,9 @@
       }
 
       const data = JSON.stringify({ name });
-      Telegram.WebApp.sendData(data); // Отправляем данные в бота
-      Telegram.WebApp.close(); // Закрываем окно
+      console.log("Отправляем данные:", data);
+      Telegram.WebApp.sendData(data);
+      Telegram.WebApp.close();
     }
   </script>
 </body>
