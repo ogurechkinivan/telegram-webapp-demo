@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <title>Telegram WebApp</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    Telegram.WebApp.ready(); // ОБЯЗАТЕЛЬНО
+  </script>
 </head>
 <body style="font-family: sans-serif; padding: 20px;">
-
   <h2>👋 Привет!</h2>
   <p>Введите имя:</p>
   <input id="nameInput" type="text" placeholder="Ваше имя" style="padding: 8px; width: 90%;" />
@@ -21,7 +23,7 @@
       }
 
       const data = JSON.stringify({ name });
-      console.log("Отправляем данные:", data);
+      console.log("📤 Отправка данных:", data);
       Telegram.WebApp.sendData(data);
       Telegram.WebApp.close();
     }
