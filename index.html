@@ -24,7 +24,8 @@
 
       const data = JSON.stringify({ name });
       console.log("📤 Отправка:", data);
-      Telegram.WebApp.sendData(data);
+      Telegram.WebApp.sendData(data);      // Отправка в Telegram
+      Telegram.WebApp.close();             // 🔥 ВАЖНО: Закрыть WebApp
     }
   </script>
 </body>
