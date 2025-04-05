@@ -9,7 +9,7 @@
 
   <h2>👋 Привет!</h2>
   <p>Введите имя:</p>
-  <input id="nameInput" type="text" placeholder="Ваше имя" style="padding: 8px;" />
+  <input id="nameInput" type="text" placeholder="Ваше имя" style="padding: 8px; width: 90%;" />
   <button onclick="sendName()" style="padding: 10px 20px; margin-top: 10px;">Отправить</button>
 
   <script>
@@ -20,7 +20,9 @@
         return;
       }
 
-      Telegram.WebApp.sendData(JSON.stringify({ name }));
+      const data = JSON.stringify({ name });
+      Telegram.WebApp.sendData(data); // Отправляем данные в бота
+      Telegram.WebApp.close(); // Закрываем окно
     }
   </script>
 </body>
